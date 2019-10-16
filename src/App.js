@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Toolbar from './components/Toolbar/Toolbar';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Backdrop from './components/Backdrop/Backdrop'
+import Home from './components/Pages/Home/Home'
 
 class App extends Component {
   state = {
@@ -15,25 +16,26 @@ class App extends Component {
     })
   }
 
-  backdropClickHandler = () =>{
-    this.setState({sideDrawerOpen: false});
+  backdropClickHandler = () => {
+    this.setState({ sideDrawerOpen: false });
   }
 
   render() {
     let backdrop;
 
-    if(this.state.sideDrawerOpen) {
+    if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
     return (
       <div style={{ height: '100%' }}>
+       
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
-        <main style={{ marginTop: '64px' }}>
-          <p>This is the page content</p>
+        <main >
+          <Home />
         </main>
-
+        
       </div>
     );
   }

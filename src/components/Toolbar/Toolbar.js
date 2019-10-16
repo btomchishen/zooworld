@@ -1,6 +1,10 @@
 import React from 'react'
 import './Toolbar.css'
+import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom'
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
+import Products from './../Pages/Products/Products';
+import Users from './../Pages/Users/Users';
+
 
 
 const toolbar = props => (
@@ -13,12 +17,23 @@ const toolbar = props => (
             <div className="spacer" />
             <div className="toolbar_navigation-items">
                 <ul>
-                    <li><a href="/">Products</a></li>
-                    <li><a href="/">Users</a></li>
+                    <Router>
+                        <Link to="/products"><li><a href="/">Products</a></li></Link>
+                        <Link to="/users"><li><a href="/">Users</a></li></Link>
+                    <Switch>
+                        <Route path="/products">
+                            <Products />
+                        </Route>
+                        <Route path="/users">
+                            <Users />
+                        </Route>
+                    </Switch>
+                    </Router>
+
                 </ul>
             </div>
         </nav>
-    </header>
+    </header >
 );
 
 export default toolbar
